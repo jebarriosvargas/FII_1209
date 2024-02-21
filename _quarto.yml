@@ -1,0 +1,34 @@
+project:
+  type: book
+
+book:
+  title: "Física II (1209)"
+  author:
+    - name: "JEBV"
+      orcid: 0000-0002-6880-8941
+
+  date: 02/21/2024
+  date-format: "MM/DD/YYYY"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+toc-title: Contenido
+language:
+  title-block-author-single: "Autor"
+  title-block-published: "Última actualización"
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: 
+      light: minty
+      dark: darkly
+    fontsize: 0.8em
+    css: styles.css
+    code-fold: true
+    code-summary: "Mostrar código"
+    code-line-numbers: true
+    code-copy: true
