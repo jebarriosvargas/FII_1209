@@ -1,0 +1,34 @@
+# Campo eléctrico debido a un alambre con carga
+
+::: {.callout-tip appearance="simple" icon=false collapse="true"}
+## Integral de línea de una función escalar
+
+$$
+\int_{\mathcal C} f(\vec{r}) d\ell = \int_{a}^{b} f(\vec{r}(t)) |\vec{r}'(t)| dt
+$$
+donde $\vec{r}:[a,b]\to \mathcal{C}$ es una parametrización de la curva $\mathbfcal{C}$ tal que $\vec{r}(a)$ y $\vec{r}(b)$ son los extremos de $\mathcal{C}$ y $a<b$.
+:::
+
+Dibujo del alambre con densidad de carga
+
+
+$$
+\vec{E}(P)= k_e\int_{\mathcal{C}} \frac{dq}{|\vec{r}_{dq\to P}|^2} \hat{r}_{dq\to P}  = k_e\int_{\mathcal{C}} \frac{\lambda(\vec{r})d\ell}{|\vec{r}_{dq\to P}|^2} \hat{r}_{dq\to P}
+$$
+
+Parametrización a lo largo del alambre
+$$
+\vec{r}_{dq}(t) = \left[\begin{array}{c}
+x(t)\\
+y(t)\\
+z(t)
+\end{array}\right] =
+\left[\begin{array}{c}
+a + \ell t\\
+0\\
+0
+\end{array}\right]
+$$
+
+
+

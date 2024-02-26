@@ -12,11 +12,11 @@
   {
     "objectID": "intro.html",
     "href": "intro.html",
-    "title": "1  Introduction",
+    "title": "1  Campo eléctrico debido a un alambre con carga",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "\\[\n\\vec{E}(P)= k_e\\int \\frac{dq}{|\\vec{r}_{dq\\to P}|^2} \\hat{r}_{dq\\to P}  \n\\]\nThis is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Campo eléctrico debido a un alambre con carga</span>"
     ]
   },
   {
@@ -37,6 +37,16 @@
     "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
       "References"
+    ]
+  },
+  {
+    "objectID": "CampoEalambre.html",
+    "href": "CampoEalambre.html",
+    "title": "1  Campo eléctrico debido a un alambre con carga",
+    "section": "",
+    "text": "Integral de línea de una función escalar\n\n\n\n\n\n\\[\n\\int_{\\mathcal C} f(\\vec{r}) d\\ell = \\int_{a}^{b} f(\\vec{r}(t)) |\\vec{r}'(t)| dt\n\\] donde \\(\\vec{r}:[a,b]\\to \\mathcal{C}\\) es una parametrización de la curva \\(\\mathbfcal{C}\\) tal que \\(\\vec{r}(a)\\) y \\(\\vec{r}(b)\\) son los extremos de \\(\\mathcal{C}\\) y \\(a&lt;b\\).\n\n\n\nDibujo del alambre con densidad de carga\n\\[\n\\vec{E}(P)= k_e\\int_{\\mathcal{C}} \\frac{dq}{|\\vec{r}_{dq\\to P}|^2} \\hat{r}_{dq\\to P}  = k_e\\int_{\\mathcal{C}} \\frac{\\lambda(\\vec{r})d\\ell}{|\\vec{r}_{dq\\to P}|^2} \\hat{r}_{dq\\to P}\n\\]\nParametrización a lo largo del alambre \\[\n\\vec{r}_{dq}(t) = \\left[\\begin{array}{c}\nx(t)\\\\\ny(t)\\\\\nz(t)\n\\end{array}\\right] =\n\\left[\\begin{array}{c}\na + \\ell t\\\\\n0\\\\\n0\n\\end{array}\\right]\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Campo eléctrico debido a un alambre con carga</span>"
     ]
   }
 ]

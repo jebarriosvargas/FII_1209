@@ -8,11 +8,11 @@ book:
     - name: "JEBV"
       orcid: 0000-0002-6880-8941
 
-  date: 02/21/2024
+  date: 02/25/2024
   date-format: "MM/DD/YYYY"
   chapters:
     - index.qmd
-    - intro.qmd
+    - CampoEalambre.qmd
     - summary.qmd
     - references.qmd
 toc-title: Contenido

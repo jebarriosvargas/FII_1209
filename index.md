@@ -1,6 +1,0 @@
-# Física II (1209) - FQ-UNAM
-
-En el presente sitio se encuentra algunos ejemplos visuales del curso de Física II (1209) de la Facultad de Química, UNAM.
-
-Contacto: [jebarrios@quimica.unam.mx](mailto:jebarrios@quimica.unam.mx)
-
