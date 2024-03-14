@@ -13,7 +13,7 @@ book:
   chapters:
     - index.qmd
     - CampoEalambre.qmd
-    - summary.qmd
+    - CampoEanillo.qmd
     - references.qmd
 toc-title: Contenido
 language:

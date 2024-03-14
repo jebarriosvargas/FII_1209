@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Física II (1209) - 1&nbsp; Campo eléctrico debido a un alambre con carga</title>
+<title>Física II (1209) - 2&nbsp; Campo Eléctrico debido a un anillo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,18 +20,52 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./CampoEanillo.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./CampoEalambre.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,36 +104,26 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.29.1.min']
     }
-  }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
 }
-window.Quarto = {
-  typesetMath
-};
 </script>
+
+
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -113,7 +137,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./CampoEalambre.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Campo eléctrico debido a un alambre con carga</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./CampoEanillo.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Campo Eléctrico debido a un anillo</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -149,13 +173,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./CampoEalambre.html" class="sidebar-item-text sidebar-link active">
+  <a href="./CampoEalambre.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Campo eléctrico debido a un alambre con carga</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./CampoEanillo.html" class="sidebar-item-text sidebar-link">
+  <a href="./CampoEanillo.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Campo Eléctrico debido a un anillo</span></span></a>
   </div>
 </li>
@@ -178,7 +202,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Campo eléctrico debido a un alambre con carga</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Campo Eléctrico debido a un anillo</span></h1>
 </div>
 
 
@@ -195,85 +219,120 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-simple callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<div id="4c6f4923" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> plotly</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="bu">print</span>(plotly.__version__)</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a>a <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>t <span class="op">=</span> linspace(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>z <span class="op">=</span> a<span class="op">*</span>cos(<span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span>t)</span>
+<span id="cb1-9"><a href="#cb1-9"></a>y <span class="op">=</span> a<span class="op">*</span>sin(<span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span>t)</span>
+<span id="cb1-10"><a href="#cb1-10"></a>x <span class="op">=</span> zeros_like(t)</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a>eje_x <span class="op">=</span> linspace(<span class="dv">0</span>,<span class="dv">6</span>)</span>
+<span id="cb1-13"><a href="#cb1-13"></a>eje_y <span class="op">=</span> zeros_like(x)</span>
+<span id="cb1-14"><a href="#cb1-14"></a>eje_z <span class="op">=</span> zeros_like(x)</span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a></span>
+<span id="cb1-17"><a href="#cb1-17"></a>DATA <span class="op">=</span> [</span>
+<span id="cb1-18"><a href="#cb1-18"></a>go.Scatter3d(x<span class="op">=</span>x,y<span class="op">=</span>y,z<span class="op">=</span>z,mode<span class="op">=</span><span class="st">'lines'</span>,</span>
+<span id="cb1-19"><a href="#cb1-19"></a>             line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">"red"</span>,width<span class="op">=</span><span class="dv">20</span>),showlegend<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb1-20"><a href="#cb1-20"></a>go.Scatter3d(x<span class="op">=</span>eje_x,y<span class="op">=</span>eje_y,z<span class="op">=</span>eje_z,mode<span class="op">=</span><span class="st">'lines'</span>,</span>
+<span id="cb1-21"><a href="#cb1-21"></a>             line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">"black"</span>,width<span class="op">=</span><span class="dv">4</span>),showlegend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-22"><a href="#cb1-22"></a>]</span>
+<span id="cb1-23"><a href="#cb1-23"></a>fig <span class="op">=</span> go.Figure(data<span class="op">=</span>DATA)</span>
+<span id="cb1-24"><a href="#cb1-24"></a>fig.update_layout(</span>
+<span id="cb1-25"><a href="#cb1-25"></a>    title<span class="op">=</span><span class="vs">r'$\\alpha$'</span>,</span>
+<span id="cb1-26"><a href="#cb1-26"></a>    width<span class="op">=</span><span class="dv">400</span>, height<span class="op">=</span><span class="dv">400</span>,</span>
+<span id="cb1-27"><a href="#cb1-27"></a>    margin<span class="op">=</span><span class="bu">dict</span>(t<span class="op">=</span><span class="dv">40</span>, r<span class="op">=</span><span class="dv">0</span>, l<span class="op">=</span><span class="dv">20</span>, b<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb1-28"><a href="#cb1-28"></a>)</span>
+<span id="cb1-29"><a href="#cb1-29"></a></span>
+<span id="cb1-30"><a href="#cb1-30"></a>camera <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb1-31"><a href="#cb1-31"></a>    up<span class="op">=</span><span class="bu">dict</span>(x<span class="op">=</span><span class="dv">0</span>, y<span class="op">=</span><span class="dv">1</span>, z<span class="op">=</span><span class="dv">2</span>),</span>
+<span id="cb1-32"><a href="#cb1-32"></a>    center<span class="op">=</span><span class="bu">dict</span>(x<span class="op">=</span><span class="dv">0</span>, y<span class="op">=</span><span class="dv">0</span>, z<span class="op">=</span><span class="dv">0</span>),</span>
+<span id="cb1-33"><a href="#cb1-33"></a>    eye<span class="op">=</span><span class="bu">dict</span>(x<span class="op">=</span><span class="fl">0.0</span>, y<span class="op">=-</span><span class="fl">2.5</span>, z<span class="op">=</span><span class="fl">0.0</span>)</span>
+<span id="cb1-34"><a href="#cb1-34"></a>)</span>
+<span id="cb1-35"><a href="#cb1-35"></a></span>
+<span id="cb1-36"><a href="#cb1-36"></a>fig.update_layout(scene_camera<span class="op">=</span>camera)</span>
+<span id="cb1-37"><a href="#cb1-37"></a></span>
+<span id="cb1-38"><a href="#cb1-38"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>5.19.0</code></pre>
 </div>
-<div class="callout-title-container flex-fill">
-Integral de línea de una función escalar
+<div class="cell-output cell-output-display">
+<div>                            <div id="78d75ec0-041f-4878-a325-6da6e2ba1775" class="plotly-graph-div" style="height:400px; width:400px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("78d75ec0-041f-4878-a325-6da6e2ba1775")) {                    Plotly.newPlot(                        "78d75ec0-041f-4878-a325-6da6e2ba1775",                        [{"line":{"color":"red","width":20},"mode":"lines","showlegend":false,"x":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"y":[0.0,0.511508646738024,1.0146183356380294,1.5010680195174964,1.9628702080157514,2.3924421219648635,2.7827302024139455,3.127325929872119,3.4205710520213843,3.6576504920632495,3.8346714121466423,3.9487271336578003,3.9979448648027516,3.981516451796793,3.8997116487272945,3.753873688199042,3.5463972254920004,3.2806890183878243,2.961111988301263,2.5929135812311537,2.182139604842196,1.735534956470233,1.260432872094485,0.7646345148054902,0.2562808799228529,-0.256280879922852,-0.7646345148054875,-1.2604328720944808,-1.735534956470232,-2.182139604842194,-2.5929135812311515,-2.96111198830126,-3.2806890183878226,-3.546397225492,-3.753873688199041,-3.8997116487272936,-3.9815164517967925,-3.9979448648027516,-3.9487271336578007,-3.834671412146644,-3.6576504920632513,-3.4205710520213857,-3.1273259298721197,-2.7827302024139478,-2.392442121964868,-1.9628702080157545,-1.5010680195174984,-1.01461833563803,-0.5115086467380265,-9.797174393178826e-16],"z":[4.0,3.9671600552929847,3.869179452156118,3.707667029384087,3.4852748164935576,3.205654487471827,2.8733974003909104,2.4939592074349344,2.0735702732421006,1.619133372489576,1.1381103465241307,0.6383995801335182,0.12820631028662133,-0.38409210363072616,-0.8900837358252573,-1.381460217685229,-1.8501531609633404,-2.2884666404886778,-2.6892035610452663,-3.0457838334765377,-3.3523524195673615,-3.603875471609676,-3.796222988042674,-3.9262366279642613,-3.9917815710013453,-3.9917815710013453,-3.9262366279642618,-3.7962229880426754,-3.6038754716096766,-3.3523524195673633,-3.0457838334765395,-2.6892035610452694,-2.28846664048868,-1.8501531609633413,-1.3814602176852326,-0.8900837358252618,-0.38409210363072976,0.12820631028661944,0.6383995801335172,1.1381103465241247,1.6191333724895718,2.073570273242098,2.4939592074349335,2.873397400390908,3.205654487471824,3.485274816493556,3.7076670293840865,3.8691794521561174,3.967160055292984,4.0],"type":"scatter3d"},{"line":{"color":"black","width":4},"mode":"lines","showlegend":false,"x":[0.0,0.12244897959183673,0.24489795918367346,0.36734693877551017,0.4897959183673469,0.6122448979591837,0.7346938775510203,0.8571428571428571,0.9795918367346939,1.1020408163265305,1.2244897959183674,1.346938775510204,1.4693877551020407,1.5918367346938775,1.7142857142857142,1.836734693877551,1.9591836734693877,2.0816326530612246,2.204081632653061,2.326530612244898,2.4489795918367347,2.571428571428571,2.693877551020408,2.816326530612245,2.9387755102040813,3.061224489795918,3.183673469387755,3.306122448979592,3.4285714285714284,3.5510204081632653,3.673469387755102,3.7959183673469385,3.9183673469387754,4.040816326530612,4.163265306122449,4.285714285714286,4.408163265306122,4.530612244897959,4.653061224489796,4.775510204081632,4.8979591836734695,5.020408163265306,5.142857142857142,5.26530612244898,5.387755102040816,5.5102040816326525,5.63265306122449,5.755102040816326,5.877551020408163,6.0],"y":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"z":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"type":"scatter3d"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"margin":{"t":40,"r":0,"l":20,"b":20},"title":{"text":"$\\\\alpha$"},"width":400,"height":400,"scene":{"camera":{"up":{"x":0,"y":1,"z":2},"center":{"x":0,"y":0,"z":0},"eye":{"x":0.0,"y":-2.5,"z":0.0}}}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('78d75ec0-041f-4878-a325-6da6e2ba1775');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><span class="math display">\[
-\int_{\mathcal C} f(\vec{r}) d\ell = \int_{a}^{b} f(\vec{r}(t)) |\vec{r}'(t)| dt
-\]</span> donde <span class="math inline">\(\vec{r}:[a,b]\to \mathcal{C}\)</span> es una parametrización de la curva <span class="math inline">\(\mathbfcal{C}\)</span> tal que <span class="math inline">\(\vec{r}(a)\)</span> y <span class="math inline">\(\vec{r}(b)\)</span> son los extremos de <span class="math inline">\(\mathcal{C}\)</span> y <span class="math inline">\(a&lt;b\)</span>.</p>
+<div id="832c63de" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>m <span class="op">=</span> <span class="fl">0.0123</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>g <span class="op">=</span> <span class="fl">9.8</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>theta <span class="op">=</span> <span class="fl">17.4</span><span class="op">*</span>pi<span class="op">/</span><span class="dv">180</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>q <span class="op">=</span> <span class="op">-</span><span class="fl">1.11e-6</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>Ex <span class="op">=</span> m<span class="op">*</span>g<span class="op">*</span>tan(theta)<span class="op">/</span>q</span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="bu">print</span>(Ex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>-34031.48308853118</code></pre>
 </div>
 </div>
+<div id="90c53277" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>kappa1 <span class="op">=</span> <span class="fl">3.9</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>eps0 <span class="op">=</span> <span class="fl">8.85e-12</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>A <span class="op">=</span> <span class="fl">7.9e-4</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>d <span class="op">=</span> <span class="fl">4.6e-3</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>C1 <span class="op">=</span> kappa1<span class="op">*</span>eps0<span class="op">*</span>A<span class="op">/</span>(d<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="bu">print</span>(C1)</span>
+<span id="cb5-7"><a href="#cb5-7"></a></span>
+<span id="cb5-8"><a href="#cb5-8"></a>kappa2 <span class="op">=</span> <span class="fl">11.68</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>eps0 <span class="op">=</span> <span class="fl">8.85e-12</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>A <span class="op">=</span> <span class="fl">7.9e-4</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a>d <span class="op">=</span> <span class="fl">4.6e-3</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a>C2 <span class="op">=</span> kappa2<span class="op">*</span>eps0<span class="op">*</span>A<span class="op">/</span>(d<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="bu">print</span>(C2)</span>
+<span id="cb5-14"><a href="#cb5-14"></a></span>
+<span id="cb5-15"><a href="#cb5-15"></a>Ceq <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">/</span>C1<span class="op">+</span><span class="dv">1</span><span class="op">/</span>C2)</span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="bu">print</span>(Ceq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>1.1855152173913045e-11
+3.550466086956522e-11
+8.887559524473963e-12</code></pre>
 </div>
-<p>Dibujo del alambre con densidad de carga</p>
-<p><span class="math display">\[
-\vec{E}(P)= k_e\int_{\mathcal{C}} \frac{dq}{|\vec{r}_{dq\to P}|^2} \hat{r}_{dq\to P}  = k_e\int_{\mathcal{C}} \frac{\lambda(\vec{r}_{dq})d\ell}{|\vec{r}_{dq\to P}|^2} \hat{r}_{dq\to P}
-\]</span></p>
-<p>Parametrización a lo largo del alambre <span class="math display">\[
-\vec{r}_{dq}(t) = \left[\begin{array}{c}
-x(t)\\
-y(t)\\
-z(t)
-\end{array}\right] =
-\left[\begin{array}{c}
-a + \ell t\\
-0\\
-0
-\end{array}\right]
-\]</span></p>
-<p>Entonces,</p>
-<p><span class="math display">\[
-\vec{r}_{dq\to P} = \vec{r}_P - \vec{r}_{dq} = \left[\begin{array}{c}
-0\\
-0\\
-0
-\end{array}\right]-\left[\begin{array}{c}
-a+\ell t\\
-0\\
-0
-\end{array}\right]=\left[\begin{array}{c}
--(a+\ell t)\\
-0\\
-0
-\end{array}\right]
-\]</span></p>
-<p>Norma al cuadrado <span class="math display">\[
-|\vec{r}_{dq\to P}|^2 = \left[\begin{array}{c}
--(a+\ell t)\\
-0\\
-0
-\end{array}\right]\cdot \left[\begin{array}{c}
--(a+\ell t)\\
-0\\
-0
-\end{array}\right] = (a+\ell t)^2
-\]</span></p>
-<p>Norma <span class="math display">\[
-|\vec{r}_{dq\to P}| = (a+\ell t)
-\]</span></p>
-<p><span class="math display">\[
-\hat{r}_{dq\to P} = \frac{\vec{r}_{dq\to P}}{|\vec{r}_{dq\to P}|} = \frac{1}{|\vec{r}_{dq\to P}|}\vec{r}_{dq\to P} = \frac{1}{(a+\ell t)} \left[\begin{array}{c}
--(a+\ell t)\\
-0\\
-0
-\end{array}\right]=\left[\begin{array}{c}
--1\\
-0\\
-0
-\end{array}\right] = -\left[\begin{array}{c}
-1\\
-0\\
-0
-\end{array}\right] = -\hat{\imath}
-\]</span></p>
+</div>
 
 
 
@@ -811,13 +870,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Prefacio">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefacio</span>
+      <a href="./CampoEalambre.html" class="pagination-link" aria-label="Campo eléctrico debido a un alambre con carga">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Campo eléctrico debido a un alambre con carga</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./CampoEanillo.html" class="pagination-link" aria-label="Campo Eléctrico debido a un anillo">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Campo Eléctrico debido a un anillo</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

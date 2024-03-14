@@ -4,9 +4,9 @@
     "href": "index.html",
     "title": "Física II (1209)",
     "section": "",
-    "text": "Preface\nEn el presente sitio se encuentra algunos ejemplos visuales del curso de Física II (1209) de la Facultad de Química, UNAM.\nContacto: jebarrios@quimica.unam.mx",
+    "text": "Prefacio\nEn el presente sitio se encuentra algunos ejemplos visuales del curso de Física II (1209) de la Facultad de Química, UNAM.\nContacto: jebarrios@quimica.unam.mx",
     "crumbs": [
-      "Preface"
+      "Prefacio"
     ]
   },
   {
@@ -44,9 +44,19 @@
     "href": "CampoEalambre.html",
     "title": "1  Campo eléctrico debido a un alambre con carga",
     "section": "",
-    "text": "Integral de línea de una función escalar\n\n\n\n\n\n\\[\n\\int_{\\mathcal C} f(\\vec{r}) d\\ell = \\int_{a}^{b} f(\\vec{r}(t)) |\\vec{r}'(t)| dt\n\\] donde \\(\\vec{r}:[a,b]\\to \\mathcal{C}\\) es una parametrización de la curva \\(\\mathbfcal{C}\\) tal que \\(\\vec{r}(a)\\) y \\(\\vec{r}(b)\\) son los extremos de \\(\\mathcal{C}\\) y \\(a&lt;b\\).\n\n\n\nDibujo del alambre con densidad de carga\n\\[\n\\vec{E}(P)= k_e\\int_{\\mathcal{C}} \\frac{dq}{|\\vec{r}_{dq\\to P}|^2} \\hat{r}_{dq\\to P}  = k_e\\int_{\\mathcal{C}} \\frac{\\lambda(\\vec{r})d\\ell}{|\\vec{r}_{dq\\to P}|^2} \\hat{r}_{dq\\to P}\n\\]\nParametrización a lo largo del alambre \\[\n\\vec{r}_{dq}(t) = \\left[\\begin{array}{c}\nx(t)\\\\\ny(t)\\\\\nz(t)\n\\end{array}\\right] =\n\\left[\\begin{array}{c}\na + \\ell t\\\\\n0\\\\\n0\n\\end{array}\\right]\n\\]",
+    "text": "Integral de línea de una función escalar\n\n\n\n\n\n\\[\n\\int_{\\mathcal C} f(\\vec{r}) d\\ell = \\int_{a}^{b} f(\\vec{r}(t)) |\\vec{r}'(t)| dt\n\\] donde \\(\\vec{r}:[a,b]\\to \\mathcal{C}\\) es una parametrización de la curva \\(\\mathbfcal{C}\\) tal que \\(\\vec{r}(a)\\) y \\(\\vec{r}(b)\\) son los extremos de \\(\\mathcal{C}\\) y \\(a&lt;b\\).\n\n\n\nDibujo del alambre con densidad de carga\n\\[\n\\vec{E}(P)= k_e\\int_{\\mathcal{C}} \\frac{dq}{|\\vec{r}_{dq\\to P}|^2} \\hat{r}_{dq\\to P}  = k_e\\int_{\\mathcal{C}} \\frac{\\lambda(\\vec{r}_{dq})d\\ell}{|\\vec{r}_{dq\\to P}|^2} \\hat{r}_{dq\\to P}\n\\]\nParametrización a lo largo del alambre \\[\n\\vec{r}_{dq}(t) = \\left[\\begin{array}{c}\nx(t)\\\\\ny(t)\\\\\nz(t)\n\\end{array}\\right] =\n\\left[\\begin{array}{c}\na + \\ell t\\\\\n0\\\\\n0\n\\end{array}\\right]\n\\]\nEntonces,\n\\[\n\\vec{r}_{dq\\to P} = \\vec{r}_P - \\vec{r}_{dq} = \\left[\\begin{array}{c}\n0\\\\\n0\\\\\n0\n\\end{array}\\right]-\\left[\\begin{array}{c}\na+\\ell t\\\\\n0\\\\\n0\n\\end{array}\\right]=\\left[\\begin{array}{c}\n-(a+\\ell t)\\\\\n0\\\\\n0\n\\end{array}\\right]\n\\]\nNorma al cuadrado \\[\n|\\vec{r}_{dq\\to P}|^2 = \\left[\\begin{array}{c}\n-(a+\\ell t)\\\\\n0\\\\\n0\n\\end{array}\\right]\\cdot \\left[\\begin{array}{c}\n-(a+\\ell t)\\\\\n0\\\\\n0\n\\end{array}\\right] = (a+\\ell t)^2\n\\]\nNorma \\[\n|\\vec{r}_{dq\\to P}| = (a+\\ell t)\n\\]\n\\[\n\\hat{r}_{dq\\to P} = \\frac{\\vec{r}_{dq\\to P}}{|\\vec{r}_{dq\\to P}|} = \\frac{1}{|\\vec{r}_{dq\\to P}|}\\vec{r}_{dq\\to P} = \\frac{1}{(a+\\ell t)} \\left[\\begin{array}{c}\n-(a+\\ell t)\\\\\n0\\\\\n0\n\\end{array}\\right]=\\left[\\begin{array}{c}\n-1\\\\\n0\\\\\n0\n\\end{array}\\right] = -\\left[\\begin{array}{c}\n1\\\\\n0\\\\\n0\n\\end{array}\\right] = -\\hat{\\imath}\n\\]",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Campo eléctrico debido a un alambre con carga</span>"
+    ]
+  },
+  {
+    "objectID": "CampoEanillo.html",
+    "href": "CampoEanillo.html",
+    "title": "2  Campo Eléctrico debido a un anillo",
+    "section": "",
+    "text": "Mostrar código\nfrom pylab import *\nimport plotly.graph_objects as go\nimport plotly\nprint(plotly.__version__)\n\na = 4\nt = linspace(0,1)\nz = a*cos(2*pi*t)\ny = a*sin(2*pi*t)\nx = zeros_like(t)\n\neje_x = linspace(0,6)\neje_y = zeros_like(x)\neje_z = zeros_like(x)\n\n\nDATA = [\ngo.Scatter3d(x=x,y=y,z=z,mode='lines',\n             line=dict(color=\"red\",width=20),showlegend=False),\ngo.Scatter3d(x=eje_x,y=eje_y,z=eje_z,mode='lines',\n             line=dict(color=\"black\",width=4),showlegend=False)\n]\nfig = go.Figure(data=DATA)\nfig.update_layout(\n    title=r'$\\\\alpha$',\n    width=400, height=400,\n    margin=dict(t=40, r=0, l=20, b=20)\n)\n\ncamera = dict(\n    up=dict(x=0, y=1, z=2),\n    center=dict(x=0, y=0, z=0),\n    eye=dict(x=0.0, y=-2.5, z=0.0)\n)\n\nfig.update_layout(scene_camera=camera)\n\nfig.show()\n\n\n5.19.0\n\n\n                                                \n\n\n\n\nMostrar código\nfrom pylab import *\nm = 0.0123\ng = 9.8\ntheta = 17.4*pi/180\nq = -1.11e-6\nEx = m*g*tan(theta)/q\nprint(Ex)\n\n\n-34031.48308853118\n\n\n\n\nMostrar código\nkappa1 = 3.9\neps0 = 8.85e-12\nA = 7.9e-4\nd = 4.6e-3\nC1 = kappa1*eps0*A/(d/2)\nprint(C1)\n\nkappa2 = 11.68\neps0 = 8.85e-12\nA = 7.9e-4\nd = 4.6e-3\nC2 = kappa2*eps0*A/(d/2)\nprint(C2)\n\nCeq = 1/(1/C1+1/C2)\nprint(Ceq)\n\n\n1.1855152173913045e-11\n3.550466086956522e-11\n8.887559524473963e-12",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Campo Eléctrico debido a un anillo</span>"
     ]
   }
 ]

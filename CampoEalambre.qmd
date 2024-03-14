@@ -13,7 +13,7 @@ Dibujo del alambre con densidad de carga
 
 
 $$
-\vec{E}(P)= k_e\int_{\mathcal{C}} \frac{dq}{|\vec{r}_{dq\to P}|^2} \hat{r}_{dq\to P}  = k_e\int_{\mathcal{C}} \frac{\lambda(\vec{r})d\ell}{|\vec{r}_{dq\to P}|^2} \hat{r}_{dq\to P}
+\vec{E}(P)= k_e\int_{\mathcal{C}} \frac{dq}{|\vec{r}_{dq\to P}|^2} \hat{r}_{dq\to P}  = k_e\int_{\mathcal{C}} \frac{\lambda(\vec{r}_{dq})d\ell}{|\vec{r}_{dq\to P}|^2} \hat{r}_{dq\to P}
 $$
 
 Parametrización a lo largo del alambre
@@ -28,6 +28,58 @@ a + \ell t\\
 0\\
 0
 \end{array}\right]
+$$
+
+Entonces,
+
+$$
+\vec{r}_{dq\to P} = \vec{r}_P - \vec{r}_{dq} = \left[\begin{array}{c}
+0\\
+0\\
+0
+\end{array}\right]-\left[\begin{array}{c}
+a+\ell t\\
+0\\
+0
+\end{array}\right]=\left[\begin{array}{c}
+-(a+\ell t)\\
+0\\
+0
+\end{array}\right]
+$$
+
+Norma al cuadrado
+$$
+|\vec{r}_{dq\to P}|^2 = \left[\begin{array}{c}
+-(a+\ell t)\\
+0\\
+0
+\end{array}\right]\cdot \left[\begin{array}{c}
+-(a+\ell t)\\
+0\\
+0
+\end{array}\right] = (a+\ell t)^2
+$$
+
+Norma
+$$
+|\vec{r}_{dq\to P}| = (a+\ell t)
+$$
+
+$$
+\hat{r}_{dq\to P} = \frac{\vec{r}_{dq\to P}}{|\vec{r}_{dq\to P}|} = \frac{1}{|\vec{r}_{dq\to P}|}\vec{r}_{dq\to P} = \frac{1}{(a+\ell t)} \left[\begin{array}{c}
+-(a+\ell t)\\
+0\\
+0
+\end{array}\right]=\left[\begin{array}{c}
+-1\\
+0\\
+0
+\end{array}\right] = -\left[\begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right] = -\hat{\imath}
 $$
 
 
